@@ -1,0 +1,67 @@
+{
+  "2025-01-18": {
+    "rounds": [
+      {
+        "type": "sounds-like",
+        "theme": "BREAKFAST",
+        "tileContent": "text",
+        "grid": ["PAN", "POUR", "EGG", "CAKE", "RIDGE", "NOG", "SAND", "BELL", "WICH"],
+        "groupings": [
+          { "words": ["PAN", "CAKE"], "result": "Pancake" },
+          { "words": ["POUR", "RIDGE"], "result": "Porridge" },
+          { "words": ["EGG", "NOG"], "result": "Eggnog" },
+          { "words": ["SAND", "WICH"], "result": "Sandwich" }
+        ],
+        "alice": "BELL",
+        "groupsToFind": 4
+      },
+      {
+        "type": "sounds-like",
+        "theme": "MUSIC",
+        "tileContent": "text",
+        "grid": ["ROCK", "GUITAR", "ROLL", "AND", "DRUM", "BEAT", "BASS", "RING", "LINE"],
+        "groupings": [
+          { "words": ["ROCK", "AND", "ROLL"], "result": "Rock and Roll" },
+          { "words": ["DRUM", "BEAT"], "result": "Drumbeat" },
+          { "words": ["BASS", "LINE"], "result": "Bassline" },
+          { "words": ["GUITAR"], "result": "Guitar" }
+        ],
+        "alice": "RING",
+        "groupsToFind": 4
+      },
+      {
+        "type": "compound-words",
+        "theme": "NATURE",
+        "tileContent": "text",
+        "grid": ["SUN", "FLOWER", "RAIN", "BOW", "MOON", "LIGHT", "STAR", "TRUE", "FISH"],
+        "groupings": [
+          { "words": ["SUN", "FLOWER"], "result": "Sunflower" },
+          { "words": ["RAIN", "BOW"], "result": "Rainbow" },
+          { "words": ["MOON", "LIGHT"], "result": "Moonlight" },
+          { "words": ["STAR", "FISH"], "result": "Starfish" }
+        ],
+        "alice": "TRUE",
+        "groupsToFind": 4
+      }
+    ],
+    "finalPhrase": "BELL RING TRUE"
+  },
+  "2025-01-19": {
+    "rounds": [
+      {
+        "type": "phrases",
+        "theme": "IDIOMS",
+        "tileContent": "text",
+        "grid": ["BREAK", "THE", "ICE", "HIT", "ROAD", "JACK", "KICK", "BUCKET", "BLUE"],
+        "groupings": [
+          { "words": ["BREAK", "THE", "ICE"], "result": "Break the ice" },
+          { "words": ["HIT", "THE", "ROAD"], "result": "Hit the road" },
+          { "words": ["KICK", "THE", "BUCKET"], "result": "Kick the bucket" }
+        ],
+        "alice": "BLUE",
+        "groupsToFind": 3
+      }
+    ],
+    "finalPhrase": "BLUE"
+  }
+}
