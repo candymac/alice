@@ -18,6 +18,7 @@ export const useGameStore = defineStore('game', () => {
   const grid = ref([])                    // Array of tile content (9 items for 3x3)
   const selectedTiles = ref([])           // Currently selected tile indices (in order of selection)
   const foundGroups = ref([])             // [{ words: [], result: '', color: '' }]
+  const solvedTiles = ref({})             // { index: colorIndex } - maps tile index to its group color
   const groupsToFind = ref(0)             // Number of groups to find in current round
 
   // Game progress
@@ -98,6 +99,7 @@ export const useGameStore = defineStore('game', () => {
     grid.value = [...roundData.grid]
     selectedTiles.value = []
     foundGroups.value = []
+    solvedTiles.value = {}
     groupsToFind.value = roundData.groupsToFind ?? roundData.groupings.length
     errorsThisRound.value = 0
     roundType.value = roundData.type ?? ''
@@ -112,6 +114,7 @@ export const useGameStore = defineStore('game', () => {
    */
   function selectTile(index) {
     if (gameStatus.value !== 'playing') return
+    if (solvedTiles.value[index] !== undefined) return // Can't select solved tiles
 
     const alreadySelected = selectedTiles.value.indexOf(index)
 
@@ -163,10 +166,9 @@ export const useGameStore = defineStore('game', () => {
         color: colorIndex
       })
 
-      // Remove matched tiles from grid
-      const indicesToRemove = [...selectedTiles.value].sort((a, b) => b - a)
-      indicesToRemove.forEach(i => {
-        grid.value.splice(i, 1)
+      // Mark matched tiles as solved (instead of removing them)
+      selectedTiles.value.forEach(i => {
+        solvedTiles.value[i] = colorIndex
       })
 
       clearSelection()
@@ -287,6 +289,7 @@ export const useGameStore = defineStore('game', () => {
     grid,
     selectedTiles,
     foundGroups,
+    solvedTiles,
     groupsToFind,
     alices,
     errorsPerRound,

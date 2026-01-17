@@ -22,23 +22,19 @@ const indicators = computed(() => {
   <div
     class="error-indicator"
     role="status"
-    :aria-label="`${remainingErrors} mistakes remaining`"
+    :aria-label="`${remainingErrors} messes remaining`"
   >
-    <span class="error-indicator__label">Mistakes:</span>
+    <span class="error-indicator__label">Messes:</span>
 
-    <div class="error-indicator__dots">
+    <div class="error-indicator__plates">
       <span
         v-for="(indicator, index) in indicators"
         :key="index"
-        class="error-indicator__dot"
-        :class="{ 'error-indicator__dot--used': indicator.used }"
+        class="error-indicator__plate"
+        :class="{ 'error-indicator__plate--used': indicator.used }"
         :aria-hidden="true"
-      />
+      >{{ indicator.used ? '💔' : '🍽️' }}</span>
     </div>
-
-    <span class="error-indicator__count">
-      {{ remainingErrors }} left
-    </span>
   </div>
 </template>
 
@@ -61,27 +57,19 @@ const indicators = computed(() => {
   letter-spacing: 0.05em;
 }
 
-.error-indicator__dots {
+.error-indicator__plates {
   display: flex;
   gap: 0.25rem;
 }
 
-.error-indicator__dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background-color: var(--color-success);
-  transition: background-color 0.2s ease, transform 0.2s ease;
+.error-indicator__plate {
+  font-size: 1.25rem;
+  line-height: 1;
+  transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
-.error-indicator__dot--used {
-  background-color: var(--color-error);
-  transform: scale(0.8);
-}
-
-.error-indicator__count {
-  font-size: 0.75rem;
-  color: var(--color-muted);
-  margin-left: 0.25rem;
+.error-indicator__plate--used {
+  opacity: 0.6;
+  transform: scale(0.85);
 }
 </style>

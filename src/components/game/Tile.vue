@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed } from 'vue'
 import { gsap } from 'gsap'
 import { settings } from '@/config/settings'
 
@@ -178,6 +178,70 @@ defineExpose({ shake, pulse })
 <style scoped>
 .tile {
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+  background-color: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-tile);
+  box-shadow: var(--shadow-tile);
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    border-color 0.15s ease;
+  user-select: none;
+}
+
+.tile:hover:not(:disabled) {
+  box-shadow: var(--shadow-tile-hover);
+  border-color: var(--color-border-strong);
+}
+
+.tile--selected {
+  border-color: var(--color-accent);
+  background-color: var(--color-accent);
+  color: white;
+}
+
+.tile--found {
+  pointer-events: none;
+  cursor: default;
+  opacity: 0.85;
+}
+
+.tile--found-1 {
+  background-color: var(--color-group-blue-bg);
+  border-color: var(--color-group-blue);
+  color: var(--color-group-blue);
+}
+
+.tile--found-2 {
+  background-color: var(--color-group-green-bg);
+  border-color: var(--color-group-green);
+  color: var(--color-group-green);
+}
+
+.tile--found-3 {
+  background-color: var(--color-group-purple-bg);
+  border-color: var(--color-group-purple);
+  color: var(--color-group-purple);
+}
+
+.tile--found-4 {
+  background-color: var(--color-group-orange-bg);
+  border-color: var(--color-group-orange);
+  color: var(--color-group-orange);
+}
+
+.tile--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .tile__text {
@@ -206,10 +270,5 @@ defineExpose({ shake, pulse })
   font-size: 0.75rem;
   font-weight: 700;
   color: var(--color-accent);
-}
-
-.tile--disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
 }
 </style>
