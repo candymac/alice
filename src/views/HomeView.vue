@@ -15,7 +15,6 @@
 
   const gameStore = useGameStore()
   const localStorage = useLocalStorage()
-  const gameBoardRef = ref(null)
 
   const { currentPuzzle, currentRound, gameStatus, selectedTiles, roundType, theme, isGameWon, isGameLost, finalPhrase } = storeToRefs(gameStore)
 
@@ -64,12 +63,7 @@
 
   // Submit current selection
   function handleSubmit() {
-    const result = gameStore.submitGroup()
-
-    if (!result.success && gameBoardRef.value) {
-      // Wrong guess - shake tiles
-      gameBoardRef.value.shakeSelected()
-    }
+    gameStore.submitGroup()
   }
 
   // Clear selection
@@ -137,7 +131,7 @@
       <!-- Main Column: Game Board + Controls -->
       <div class="game-layout__main">
         <!-- Game board -->
-        <GameBoard ref="gameBoardRef" />
+        <GameBoard />
 
         <!-- Error indicator (Messes) -->
         <ErrorIndicator class="main__errors" />

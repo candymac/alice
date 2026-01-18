@@ -33,6 +33,9 @@
   --color-group-orange: #f59e0b;
   --color-group-orange-bg: #fef3c7;
 
+  /* Colors - Interaction */
+  --color-highlight: #fef9c3; /* Subtle yellow highlight for hover */
+
   /* Colors - Borders */
   --color-border: #e5e5e5;
   --color-border-strong: #d4d4d4;
